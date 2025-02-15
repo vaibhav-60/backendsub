@@ -4,6 +4,7 @@ import { PORT } from "./config/env.js"
 import subscriptionRouter from "./routes/subscription.route.js"
 import authRouter from "./routes/auth.route.js"
 import userRouter from "./routes/auth.user.js"
+import connectToDatabase from "./database/mongodb.js"
 
 const app = express()
 
@@ -18,6 +19,8 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`subscription tracker API is running ${PORT}`)
+    //when app is listened we will call the database
+    connectToDatabase();
 })
 
 export default app;
