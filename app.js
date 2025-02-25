@@ -20,6 +20,8 @@ app.use('/api/v1/users', userRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/subscriptions', subscriptionRouter)
 
+// token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2JkYWMzNTJlODU4NmIxZDE3NGMwOWQiLCJpYXQiOjE3NDA0ODQ2NTQsImV4cCI6MTc0MDU3MTA1NH0.CKKqwLozESuOvCul8pyJRdG4STKMvPnmWquB6hP7xSw
+
 
 app.use(errorMiddleware);
 

@@ -16,7 +16,7 @@ const subscriptionSchema = mongoose.Schema({
     currency: {
         type: String,
         enum: ["USD", "INR", "GDB"],
-        default: INR
+        default: 'INR'
     },
     frequency: {
         type: String,
@@ -49,7 +49,6 @@ const subscriptionSchema = mongoose.Schema({
     },
     renewalDate: {
         type: Date,
-        required: true,
         validate: {
             validator: function(value) {
                 return value > this.startDate
@@ -69,7 +68,7 @@ const subscriptionSchema = mongoose.Schema({
 
 //Below function is a middleware function in mongoose which excute before saving a document to the database.
 // it allows to perform validation or operation on the data beign saved
-subscriptionSchema.pre('save', function(){
+subscriptionSchema.pre('save', function(next){
     if(!this.renewalDate) {
         const renewalPeriods = {
             daily: 1,
@@ -92,4 +91,6 @@ subscriptionSchema.pre('save', function(){
 })
 
 const Subscription = mongoose.model("Subscription", subscriptionSchema);
+
+export default Subscription;
 
